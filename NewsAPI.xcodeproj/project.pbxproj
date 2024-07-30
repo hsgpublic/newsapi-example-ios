@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		57425FD12C592675007D1E76 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 57425FD02C592675007D1E76 /* Alamofire */; };
+		57425FD52C59276D007D1E76 /* Endpointable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FD42C59276D007D1E76 /* Endpointable.swift */; };
+		57425FD72C59289E007D1E76 /* TopHeadlinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FD62C59289E007D1E76 /* TopHeadlinesEndpoint.swift */; };
+		57425FDA2C592C11007D1E76 /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FD92C592C11007D1E76 /* ServerConfig.swift */; };
 		5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899992C59208E00013EEF /* TopHeadlinesRepository.swift */; };
 		5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */; };
 		5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999E2C5920BE00013EEF /* HeadlineEntity.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57425FD42C59276D007D1E76 /* Endpointable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpointable.swift; sourceTree = "<group>"; };
+		57425FD62C59289E007D1E76 /* TopHeadlinesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesEndpoint.swift; sourceTree = "<group>"; };
+		57425FD92C592C11007D1E76 /* ServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
 		577899992C59208E00013EEF /* TopHeadlinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepository.swift; sourceTree = "<group>"; };
 		5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesLocalDataSource.swift; sourceTree = "<group>"; };
 		5778999E2C5920BE00013EEF /* HeadlineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineEntity.swift; sourceTree = "<group>"; };
@@ -89,6 +95,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57425FD32C59275A007D1E76 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				57425FD42C59276D007D1E76 /* Endpointable.swift */,
+				57425FD62C59289E007D1E76 /* TopHeadlinesEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		57425FD82C592B77007D1E76 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				57425FD92C592C11007D1E76 /* ServerConfig.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		577899942C59205A00013EEF /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +134,7 @@
 		577899962C59206A00013EEF /* RemoteDataSources */ = {
 			isa = PBXGroup;
 			children = (
+				57425FD32C59275A007D1E76 /* Endpoints */,
 				577899A22C5920D900013EEF /* Models */,
 				577899A02C5920D500013EEF /* TopHeadlinesRemoteDataSource.swift */,
 			);
@@ -175,6 +199,7 @@
 		57EC79032C58D4EF004715AE /* NewsAPI */ = {
 			isa = PBXGroup;
 			children = (
+				57425FD82C592B77007D1E76 /* Configs */,
 				577899942C59205A00013EEF /* DataLayer */,
 				57EC79042C58D4EF004715AE /* NewsAPIApp.swift */,
 				57EC79062C58D4EF004715AE /* ContentView.swift */,
@@ -346,6 +371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				57EC79072C58D4EF004715AE /* ContentView.swift in Sources */,
+				57425FDA2C592C11007D1E76 /* ServerConfig.swift in Sources */,
+				57425FD52C59276D007D1E76 /* Endpointable.swift in Sources */,
+				57425FD72C59289E007D1E76 /* TopHeadlinesEndpoint.swift in Sources */,
 				577899A62C59210100013EEF /* HeadlineModel.swift in Sources */,
 				577899A42C5920F300013EEF /* TopHeadlinesResponseModel.swift in Sources */,
 				577899AA2C59249600013EEF /* ArticleResponseModel.swift in Sources */,
