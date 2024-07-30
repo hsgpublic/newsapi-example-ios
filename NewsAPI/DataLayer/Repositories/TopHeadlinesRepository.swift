@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import Combine
+
+final class TopHeadlinesRepository {
+    private let remoteDataSource: TopHeadlinesRemoteDataSource
+    
+    init(remoteDataSource: TopHeadlinesRemoteDataSource = TopHeadlinesRemoteDataSource()) {
+        self.remoteDataSource = remoteDataSource
+    }
+}

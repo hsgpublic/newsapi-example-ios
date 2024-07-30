@@ -9,10 +9,13 @@ import Alamofire
 import Combine
 import Foundation
 
-final class AlamofireHelper: HTTPRequestable {
+final class AlamofireHelper {
     static let shared = AlamofireHelper()
     private init() { }
-    
+}
+
+// MARK: - HTTPRequestable
+extension AlamofireHelper: HTTPRequestable {
     func request<T: Decodable>(endpoint: Endpointable, type: T.Type) -> AnyPublisher<T, Error> {
         guard let url = endpoint.url else {
             let error = NSError(
