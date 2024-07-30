@@ -8,18 +8,20 @@
 import Foundation
 
 enum EndpointScheme: String {
-    case http
     case https
 }
 
 enum EndpointMethod: String {
     case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
+}
+
+enum EndpointContentType: String {
+    case applicationJson = "application/json"
 }
 
 protocol Endpointable {
+    var url: URL? { get }
+    var urlString: String { get }
     var scheme: EndpointScheme { get }
     var host: String { get }
     var port: Int { get }
@@ -32,6 +34,21 @@ protocol Endpointable {
 }
 
 extension Endpointable {
+    var url: URL? {
+        let mergedQuery = baseQuery.merging(query, uniquingKeysWith: { $1 })
+        var components = URLComponents()
+        components.scheme = scheme.rawValue
+        components.host = host
+        components.port = port
+        components.path = path
+        components.queryItems = mergedQuery.map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+        return components.url
+    }
+    var urlString: String {
+        "\(scheme)://\(host)\(path)" + (query.isEmpty ? "" : "?\(query)")
+    }
     var scheme: EndpointScheme {
         ServerConfig.scheme
     }

@@ -16,6 +16,14 @@ struct TopHeadlinesEndpoint: Endpointable {
     var query: [String : String] {
         _query
     }
+    var headers: [String : String] {
+        [
+            "Content-Type": EndpointContentType.applicationJson.rawValue
+        ]
+    }
+    var method: EndpointMethod {
+        .get
+    }
     
     init(country: String) {
         _query = [
