@@ -17,6 +17,9 @@
 		5771DF432C5A27CF00B0B08B /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF422C5A27CF00B0B08B /* ArticleView.swift */; };
 		5771DF452C5A29FE00B0B08B /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */; };
 		5771DF482C5A604F00B0B08B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5771DF472C5A604F00B0B08B /* RealmSwift */; };
+		5771DF512C5A853C00B0B08B /* DatabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF502C5A853C00B0B08B /* DatabaseConfig.swift */; };
+		5771DF542C5A856800B0B08B /* DatabaseAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */; };
+		5771DF562C5A857B00B0B08B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF552C5A857B00B0B08B /* RealmHelper.swift */; };
 		5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899992C59208E00013EEF /* TopHeadlinesRepository.swift */; };
 		5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */; };
 		5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999E2C5920BE00013EEF /* HeadlineEntity.swift */; };
@@ -67,6 +70,9 @@
 		5771DF402C5A27C100B0B08B /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		5771DF422C5A27CF00B0B08B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		5771DF502C5A853C00B0B08B /* DatabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConfig.swift; sourceTree = "<group>"; };
+		5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccessible.swift; sourceTree = "<group>"; };
+		5771DF552C5A857B00B0B08B /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		577899992C59208E00013EEF /* TopHeadlinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepository.swift; sourceTree = "<group>"; };
 		5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesLocalDataSource.swift; sourceTree = "<group>"; };
 		5778999E2C5920BE00013EEF /* HeadlineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineEntity.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 		57425FD82C592B77007D1E76 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				5771DF502C5A853C00B0B08B /* DatabaseConfig.swift */,
 				57425FD92C592C11007D1E76 /* ServerConfig.swift */,
 			);
 			path = Configs;
@@ -156,6 +163,15 @@
 				5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */,
 			);
 			path = Article;
+			sourceTree = "<group>";
+		};
+		5771DF522C5A855900B0B08B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */,
+				5771DF552C5A857B00B0B08B /* RealmHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		577899942C59205A00013EEF /* DataLayer */ = {
@@ -192,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				5778999D2C5920AA00013EEF /* Entities */,
+				5771DF522C5A855900B0B08B /* Helpers */,
 				5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */,
 			);
 			path = LocalDataSources;
@@ -462,13 +479,16 @@
 				5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */,
 				57CC54642C59C67500A5ACD3 /* HeadlineCell.swift in Sources */,
 				5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */,
+				5771DF542C5A856800B0B08B /* DatabaseAccessible.swift in Sources */,
 				5771DF412C5A27C100B0B08B /* ArticleViewController.swift in Sources */,
 				577899A82C59248500013EEF /* SourceResponseModel.swift in Sources */,
+				5771DF512C5A853C00B0B08B /* DatabaseConfig.swift in Sources */,
 				5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */,
 				57425FE32C5936B7007D1E76 /* HTTPRequestable.swift in Sources */,
 				577899A12C5920D500013EEF /* TopHeadlinesRemoteDataSource.swift in Sources */,
 				5771DF432C5A27CF00B0B08B /* ArticleView.swift in Sources */,
 				5771DF452C5A29FE00B0B08B /* ArticleViewModel.swift in Sources */,
+				5771DF562C5A857B00B0B08B /* RealmHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
