@@ -17,6 +17,7 @@ struct ArticleResponseModel: Decodable {
     let publishedAt: String
     let content: String
     
+    // MARK: Constants
     enum CodingKeys: String, CodingKey {
         case source
         case author
@@ -28,6 +29,7 @@ struct ArticleResponseModel: Decodable {
         case content
     }
     
+    // MARK: Lifecycle
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -39,5 +41,18 @@ struct ArticleResponseModel: Decodable {
         self.urlToImage = try container.decodeIfPresent(String.self, forKey: .urlToImage) ?? ""
         self.publishedAt = try container.decodeIfPresent(String.self, forKey: .publishedAt) ?? ""
         self.content = try container.decodeIfPresent(String.self, forKey: .content) ?? ""
+    }
+}
+
+extension ArticleResponseModel {
+    // MARK: Functions
+    func toHeadlineEntity() -> HeadlineEntity {
+        return HeadlineEntity(
+            author: author,
+            title: title,
+            url: url,
+            urlToImage: urlToImage,
+            publishedAt: publishedAt
+        )
     }
 }
