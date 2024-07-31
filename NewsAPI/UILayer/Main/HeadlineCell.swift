@@ -17,9 +17,14 @@ final class HeadlineCell: UICollectionViewCell {
     private var isDarkMode: Bool {
         traitCollection.userInterfaceStyle == .dark
     }
-    private var placeholderImage = UIImage(systemName: "photo.circle")
     
     // MARK: Views
+    let placeholderImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(systemName: "photo")
+        return view
+    }()
     let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -61,6 +66,7 @@ final class HeadlineCell: UICollectionViewCell {
 // MARK: - Functions
 extension HeadlineCell {
     private func layout() {
+        contentView.addSubview(placeholderImageView)
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(publishInfoLabel)
@@ -74,6 +80,13 @@ extension HeadlineCell {
             make.top
                 .equalToSuperview()
                 .offset(10)
+        }
+        
+        placeholderImageView.snp.makeConstraints { make in
+            make.size
+                .equalTo(50)
+            make.center
+                .equalTo(imageView.snp.center)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -103,7 +116,7 @@ extension HeadlineCell {
     
     private func updateColors() {
         let isDarkMode = self.isDarkMode
-        placeholderImage = placeholderImage?.withTintColor(
+        placeholderImageView.image = placeholderImageView.image?.withTintColor(
             isDarkMode ? .darkGray : .lightGray,
             renderingMode: .alwaysOriginal
         )
@@ -113,7 +126,7 @@ extension HeadlineCell {
     
     func setup(data: HeadlineCellData) {
         KF.url(URL(string: data.urlToImage))
-            .placeholder(placeholderImage)
+            .placeholder(nil)
             .loadDiskFileSynchronously()
             .fade(duration: 0.25)
             .set(to: imageView)
