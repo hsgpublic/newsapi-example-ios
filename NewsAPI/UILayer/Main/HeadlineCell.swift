@@ -5,6 +5,7 @@
 //  Created by 구홍석 on 7/31/24.
 //
 
+import Kingfisher
 import SnapKit
 import UIKit
 
@@ -16,10 +17,12 @@ final class HeadlineCell: UICollectionViewCell {
     private var isDarkMode: Bool {
         traitCollection.userInterfaceStyle == .dark
     }
+    private var placeholderImage = UIImage(systemName: "photo.circle")
     
     // MARK: Views
     let imageView: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 0.3
@@ -99,11 +102,21 @@ extension HeadlineCell {
     }
     
     private func updateColors() {
+        let isDarkMode = self.isDarkMode
+        placeholderImage = placeholderImage?.withTintColor(
+            isDarkMode ? .darkGray : .lightGray,
+            renderingMode: .alwaysOriginal
+        )
         imageView.layer.borderColor = isDarkMode ? UIColor.lightGray.cgColor : UIColor.darkGray.cgColor
         publishInfoLabel.textColor = isDarkMode ? .lightGray : .darkGray
     }
     
     func setup(data: HeadlineCellData) {
+        KF.url(URL(string: data.urlToImage))
+            .placeholder(placeholderImage)
+            .loadDiskFileSynchronously()
+            .fade(duration: 0.25)
+            .set(to: imageView)
         titleLabel.text = data.title
         publishInfoLabel.text = "\(data.publishedAt) by \(data.author)"
     }
