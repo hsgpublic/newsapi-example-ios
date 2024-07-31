@@ -12,12 +12,23 @@ final class HeadlineCell: UICollectionViewCell {
     // MARK: Constants
     static let identifier = String(describing: HeadlineCell.self)
     
+    // MARK: Properties
+    private var isDarkMode: Bool {
+        traitCollection.userInterfaceStyle == .dark
+    }
+    
     // MARK: Views
-    let imageView = UIImageView()
+    let imageView: UIImageView = {
+        let view = UIImageView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 0.3
+        return view
+    }()
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.font = UIFont.systemFont(ofSize: 17)
-        view.numberOfLines = 5
+        view.font = UIFont.systemFont(ofSize: 16)
+        view.numberOfLines = 3
         return view
     }()
     let publishInfoLabel: UILabel = {
@@ -31,42 +42,65 @@ final class HeadlineCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
+        updateColors()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateColors()
+    }
 }
 
 // MARK: - Functions
 extension HeadlineCell {
-    func layout() {
+    private func layout() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(publishInfoLabel)
         
         imageView.snp.makeConstraints { make in
             make.size
-                .equalTo(150)
-            make.leading.verticalEdges
+                .equalTo(110)
+            make.leading
                 .equalToSuperview()
+                .offset(10)
+            make.top
+                .equalToSuperview()
+                .offset(10)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.leading
                 .equalTo(imageView.snp.trailing)
-            make.trailing.top
+                .offset(10)
+            make.trailing
                 .equalToSuperview()
+                .offset(-8)
+            make.top
+                .equalToSuperview()
+                .offset(16)
         }
         
         publishInfoLabel.snp.makeConstraints { make in
             make.leading
                 .equalTo(imageView.snp.trailing)
+                .offset(8)
             make.trailing
                 .equalToSuperview()
-            make.top
-                .equalTo(titleLabel.snp.bottom)
+                .offset(-8)
+            make.bottom
+                .equalToSuperview()
+                .offset(-16)
         }
+    }
+    
+    private func updateColors() {
+        imageView.layer.borderColor = isDarkMode ? UIColor.lightGray.cgColor : UIColor.darkGray.cgColor
+        publishInfoLabel.textColor = isDarkMode ? .lightGray : .darkGray
     }
     
     func setup(data: HeadlineCellData) {

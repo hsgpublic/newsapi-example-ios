@@ -12,10 +12,6 @@ final class MainViewController: UIViewController {
     // MARK: Properties
     private let viewModel: MainViewModel
     private var cancellables = Set<AnyCancellable>()
-    private var isLandscapt: Bool {
-        let landscapeOrientations: [UIDeviceOrientation] = [.landscapeLeft, .landscapeRight]
-        return landscapeOrientations.contains(UIDevice.current.orientation)
-    }
     
     // MARK: Views
     private let mainView = MainView()
@@ -44,6 +40,14 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
+        guard let flowLayout = mainView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        
+        flowLayout.invalidateLayout()
     }
 }
 
@@ -112,8 +116,11 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
-        let maxWidth = collectionView.frame.width
-        let itemWidth = isLandscapt ? maxWidth / 3.0 : maxWidth
-        return CGSize(width: itemWidth, height: 150)
+        let horizontalItemCount: Int = UIDevice.current.orientation.isLandscape ? 3 : 1
+        let horizontalEdgeInset: CGFloat = (flowLayout?.sectionInset.left ?? 0) + (flowLayout?.sectionInset.right ?? 0)
+        let widthSpacing = (flowLayout?.minimumInteritemSpacing ?? 0) * CGFloat(horizontalItemCount - 1)
+        let maxWidth = collectionView.frame.width - horizontalEdgeInset - widthSpacing
+        let itemWidth = maxWidth / CGFloat(horizontalItemCount)
+        return CGSize(width: itemWidth, height: 130)
     }
 }
