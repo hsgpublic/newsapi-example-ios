@@ -12,4 +12,5 @@ struct HeadlineCellData {
     let publishedAt: String // TODO: Date format.
     let author: String
     let urlToImage: String
+    let articleURL: String
 }

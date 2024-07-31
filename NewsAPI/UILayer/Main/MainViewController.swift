@@ -64,6 +64,19 @@ extension MainViewController {
     }
 }
 
+// MARK: Functions
+extension MainViewController {
+    private func moveToArticle(title: String, urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let articleViewModel = ArticleViewModel(title: title, url: url)
+        let articleViewController = ArticleViewController(viewModel: articleViewModel)
+        navigationController?.pushViewController(articleViewController, animated: true)
+    }
+}
+
 // MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,7 +104,7 @@ extension MainViewController: UICollectionViewDelegate {
             return
         }
         
-        // TODO: Move to article details webview.
+        moveToArticle(title: cellData.title, urlString: cellData.articleURL)
     }
 }
 

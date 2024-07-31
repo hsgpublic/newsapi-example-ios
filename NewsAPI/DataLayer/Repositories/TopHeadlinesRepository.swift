@@ -40,7 +40,8 @@ final class TopHeadlinesRepository {
                             title: article.title,
                             publishedAt: article.publishedAt,
                             author: article.author,
-                            urlToImage: article.urlToImage
+                            urlToImage: article.urlToImage,
+                            url: article.url
                         )
                     }
             }

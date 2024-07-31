@@ -36,6 +36,7 @@ final class ArticleViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = viewModel.title
         navigationController?.isNavigationBarHidden = false
     }
 }
@@ -50,10 +51,6 @@ extension ArticleViewController {
 // MARK: - Functions
 extension ArticleViewController {
     private func loadArticle() {
-        guard let url = viewModel.url else {
-            return
-        }
-        
-        mainView.loadArticle(url: url)
+        mainView.loadArticle(urlRequest: viewModel.urlRequest)
     }
 }

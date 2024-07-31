@@ -37,7 +37,8 @@ extension MainViewModel {
                         title: headline.title,
                         publishedAt: headline.publishedAt,
                         author: headline.author,
-                        urlToImage: headline.urlToImage
+                        urlToImage: headline.urlToImage,
+                        articleURL: headline.url
                     )
                 }
             }

@@ -9,13 +9,15 @@ import Foundation
 
 final class ArticleViewModel {
     // MARK: Properties
-    private let urlString: String
-    var url: URL? {
-        URL(string: urlString)
+    let title: String
+    private let url: URL
+    var urlRequest: URLRequest {
+        URLRequest(url: url)
     }
     
     // MARK: Lifecycle
-    init(urlString: String) {
-        self.urlString = urlString
+    init(title: String, url: URL) {
+        self.title = title
+        self.url = url
     }
 }
