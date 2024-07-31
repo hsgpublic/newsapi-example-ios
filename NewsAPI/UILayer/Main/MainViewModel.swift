@@ -18,7 +18,7 @@ final class MainViewModel {
         repository.networkErrorSubject
             .eraseToAnyPublisher()
     }
-    @Published private(set) var headlines: [HeadlineModel] = []
+    @Published private(set) var headlineCellDatas: [HeadlineCellData] = []
     
     // MARK: Lifecycle
     init(repository: TopHeadlinesRepository = TopHeadlinesRepository()) {
@@ -31,8 +31,18 @@ final class MainViewModel {
 extension MainViewModel {
     func bindRepository() {
         repository.$headlines
-            .sink { [weak self] headlines in
-                self?.headlines = headlines
+            .map { headlines in
+                headlines.map { headline in
+                    HeadlineCellData(
+                        title: headline.title,
+                        publishedAt: headline.publishedAt,
+                        author: headline.author,
+                        urlToImage: headline.urlToImage
+                    )
+                }
+            }
+            .sink { [weak self] cellDatas in
+                self?.headlineCellDatas = cellDatas
             }
             .store(in: &cancellables)
     }
@@ -42,5 +52,13 @@ extension MainViewModel {
 extension MainViewModel {
     func fetchTopHeadlines(country: String) {
         repository.fetchTopHeadlines(country: country)
+    }
+    
+    func headlineCellData(at index: Int) -> HeadlineCellData? {
+        guard headlineCellDatas.indices.contains(index) else {
+            return nil
+        }
+        
+        return headlineCellDatas[index]
     }
 }

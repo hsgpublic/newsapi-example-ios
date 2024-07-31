@@ -17,6 +17,7 @@ final class HeadlineCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 17)
+        view.numberOfLines = 5
         return view
     }()
     let publishInfoLabel: UILabel = {
@@ -50,12 +51,22 @@ final class HeadlineCell: UICollectionViewCell {
         publishInfoLabel.snp.makeConstraints { make in
             make.leading
                 .equalTo(imageView.snp.trailing)
-            make.trailing.top
+            make.trailing
                 .equalToSuperview()
+            make.top
+                .equalTo(titleLabel.snp.bottom)
         }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Functions
+extension HeadlineCell {
+    func setup(data: HeadlineCellData) {
+        titleLabel.text = data.title
+        publishInfoLabel.text = "\(data.publishedAt) by \(data.author)"
     }
 }

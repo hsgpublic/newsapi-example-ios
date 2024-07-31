@@ -12,8 +12,9 @@ final class MainView: UIView {
     // MARK: Views
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        
         var view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCell")
+        view.register(HeadlineCell.self, forCellWithReuseIdentifier: HeadlineCell.identifier)
         return view
     }()
     
