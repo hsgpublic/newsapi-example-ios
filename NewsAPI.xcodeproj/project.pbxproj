@@ -13,6 +13,9 @@
 		57425FDA2C592C11007D1E76 /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FD92C592C11007D1E76 /* ServerConfig.swift */; };
 		57425FDD2C592F66007D1E76 /* AlamofireHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FDC2C592F66007D1E76 /* AlamofireHelper.swift */; };
 		57425FE32C5936B7007D1E76 /* HTTPRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57425FE22C5936B7007D1E76 /* HTTPRequestable.swift */; };
+		5771DF412C5A27C100B0B08B /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF402C5A27C100B0B08B /* ArticleViewController.swift */; };
+		5771DF432C5A27CF00B0B08B /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF422C5A27CF00B0B08B /* ArticleView.swift */; };
+		5771DF452C5A29FE00B0B08B /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */; };
 		5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899992C59208E00013EEF /* TopHeadlinesRepository.swift */; };
 		5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */; };
 		5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999E2C5920BE00013EEF /* HeadlineEntity.swift */; };
@@ -60,6 +63,9 @@
 		57425FD92C592C11007D1E76 /* ServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
 		57425FDC2C592F66007D1E76 /* AlamofireHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireHelper.swift; sourceTree = "<group>"; };
 		57425FE22C5936B7007D1E76 /* HTTPRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestable.swift; sourceTree = "<group>"; };
+		5771DF402C5A27C100B0B08B /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		5771DF422C5A27CF00B0B08B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		577899992C59208E00013EEF /* TopHeadlinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepository.swift; sourceTree = "<group>"; };
 		5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesLocalDataSource.swift; sourceTree = "<group>"; };
 		5778999E2C5920BE00013EEF /* HeadlineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineEntity.swift; sourceTree = "<group>"; };
@@ -140,6 +146,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5771DF3F2C5A276A00B0B08B /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				5771DF422C5A27CF00B0B08B /* ArticleView.swift */,
+				5771DF402C5A27C100B0B08B /* ArticleViewController.swift */,
+				5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
 		577899942C59205A00013EEF /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +224,7 @@
 		57BEB4752C59AB0400E20930 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				5771DF3F2C5A276A00B0B08B /* Article */,
 				57BEB4762C59AB2100E20930 /* Main */,
 			);
 			path = UILayer;
@@ -441,10 +458,13 @@
 				5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */,
 				57CC54642C59C67500A5ACD3 /* HeadlineCell.swift in Sources */,
 				5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */,
+				5771DF412C5A27C100B0B08B /* ArticleViewController.swift in Sources */,
 				577899A82C59248500013EEF /* SourceResponseModel.swift in Sources */,
 				5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */,
 				57425FE32C5936B7007D1E76 /* HTTPRequestable.swift in Sources */,
 				577899A12C5920D500013EEF /* TopHeadlinesRemoteDataSource.swift in Sources */,
+				5771DF432C5A27CF00B0B08B /* ArticleView.swift in Sources */,
+				5771DF452C5A29FE00B0B08B /* ArticleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

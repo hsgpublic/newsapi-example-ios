@@ -30,6 +30,17 @@ final class HeadlineCell: UICollectionViewCell {
     // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Functions
+extension HeadlineCell {
+    func layout() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(publishInfoLabel)
@@ -58,13 +69,6 @@ final class HeadlineCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Functions
-extension HeadlineCell {
     func setup(data: HeadlineCellData) {
         titleLabel.text = data.title
         publishInfoLabel.text = "\(data.publishedAt) by \(data.author)"
