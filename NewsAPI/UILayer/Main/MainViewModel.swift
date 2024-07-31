@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+final class MainViewModel {
+    // MARK: Properties
+    private let topHeadlinesRepository: TopHeadlinesRepository
+    
+    // MARK: Lifecycle
+    init(topHeadlinesRepository: TopHeadlinesRepository = TopHeadlinesRepository()) {
+        self.topHeadlinesRepository = topHeadlinesRepository
+    }
+}
