@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct HeadlineModel {
+    let title: String
+    let publishedAt: String
+    let author: String
+    let urlToImage: String
+}

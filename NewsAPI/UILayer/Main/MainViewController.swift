@@ -28,6 +28,11 @@ final class MainViewController: UIViewController {
         view = mainView
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.fetchTopHeadlines(country: "kr")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
