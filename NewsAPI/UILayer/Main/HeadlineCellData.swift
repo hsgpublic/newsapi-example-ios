@@ -9,7 +9,8 @@ import Foundation
 
 struct HeadlineCellData {
     let title: String
-    let publishedAt: String // TODO: Date format.
+    let publishedAt: String
+    let formattedPublishedAt: String
     let author: String
     let urlToImage: String
     let articleURL: String

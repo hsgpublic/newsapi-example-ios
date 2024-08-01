@@ -33,9 +33,12 @@ extension MainViewModel {
         repository.$headlines
             .map { headlines in
                 headlines.map { headline in
-                    HeadlineCellData(
+                    let formattedPublishedAt = headline.publishedAt
+                        .currentLocaledDateString(fromFormat: "yyyy-MM-dd'T'HH:mm:ss'Z'")
+                    return HeadlineCellData(
                         title: headline.title,
                         publishedAt: headline.publishedAt,
+                        formattedPublishedAt: formattedPublishedAt,
                         author: headline.author,
                         urlToImage: headline.urlToImage,
                         articleURL: headline.url

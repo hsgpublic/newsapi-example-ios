@@ -131,6 +131,6 @@ extension HeadlineCell {
             .fade(duration: 0.25)
             .set(to: imageView)
         titleLabel.text = data.title
-        publishInfoLabel.text = "\(data.publishedAt) by \(data.author)"
+        publishInfoLabel.text = "\(data.formattedPublishedAt) by \(data.author)"
     }
 }

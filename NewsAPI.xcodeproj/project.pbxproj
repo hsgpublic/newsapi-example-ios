@@ -20,6 +20,7 @@
 		5771DF512C5A853C00B0B08B /* DatabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF502C5A853C00B0B08B /* DatabaseConfig.swift */; };
 		5771DF542C5A856800B0B08B /* DatabaseAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */; };
 		5771DF562C5A857B00B0B08B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF552C5A857B00B0B08B /* RealmHelper.swift */; };
+		5771DF592C5B133500B0B08B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF582C5B133500B0B08B /* StringExtension.swift */; };
 		5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899992C59208E00013EEF /* TopHeadlinesRepository.swift */; };
 		5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */; };
 		5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999E2C5920BE00013EEF /* HeadlineEntity.swift */; };
@@ -73,6 +74,7 @@
 		5771DF502C5A853C00B0B08B /* DatabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConfig.swift; sourceTree = "<group>"; };
 		5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccessible.swift; sourceTree = "<group>"; };
 		5771DF552C5A857B00B0B08B /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		5771DF582C5B133500B0B08B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		577899992C59208E00013EEF /* TopHeadlinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepository.swift; sourceTree = "<group>"; };
 		5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesLocalDataSource.swift; sourceTree = "<group>"; };
 		5778999E2C5920BE00013EEF /* HeadlineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineEntity.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 				5771DF552C5A857B00B0B08B /* RealmHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5771DF572C5B130B00B0B08B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5771DF582C5B133500B0B08B /* StringExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		577899942C59205A00013EEF /* DataLayer */ = {
@@ -288,6 +298,7 @@
 				57425FD82C592B77007D1E76 /* Configs */,
 				577899942C59205A00013EEF /* DataLayer */,
 				57BEB4752C59AB0400E20930 /* UILayer */,
+				5771DF572C5B130B00B0B08B /* Utils */,
 				57BEB4712C59AA9900E20930 /* AppDelegate.swift */,
 				57BEB4732C59AABA00E20930 /* SceneDelegate.swift */,
 				57EC79082C58D4F0004715AE /* Assets.xcassets */,
@@ -468,6 +479,7 @@
 				57425FDA2C592C11007D1E76 /* ServerConfig.swift in Sources */,
 				57425FD52C59276D007D1E76 /* Endpointable.swift in Sources */,
 				57425FD72C59289E007D1E76 /* TopHeadlinesEndpoint.swift in Sources */,
+				5771DF592C5B133500B0B08B /* StringExtension.swift in Sources */,
 				577899A62C59210100013EEF /* HeadlineModel.swift in Sources */,
 				577899A42C5920F300013EEF /* TopHeadlinesResponseModel.swift in Sources */,
 				57BEB4742C59AABA00E20930 /* SceneDelegate.swift in Sources */,
