@@ -21,6 +21,8 @@
 		5771DF542C5A856800B0B08B /* DatabaseAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */; };
 		5771DF562C5A857B00B0B08B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF552C5A857B00B0B08B /* RealmHelper.swift */; };
 		5771DF592C5B133500B0B08B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF582C5B133500B0B08B /* StringExtension.swift */; };
+		5771DF5B2C5D126500B0B08B /* TopHeadlinesRemoteDataSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF5A2C5D126500B0B08B /* TopHeadlinesRemoteDataSourceable.swift */; };
+		5771DF5D2C5D12F700B0B08B /* TopHeadlinesRepositoryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771DF5C2C5D12F700B0B08B /* TopHeadlinesRepositoryable.swift */; };
 		5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899992C59208E00013EEF /* TopHeadlinesRepository.swift */; };
 		5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */; };
 		5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778999E2C5920BE00013EEF /* HeadlineEntity.swift */; };
@@ -75,6 +77,8 @@
 		5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseAccessible.swift; sourceTree = "<group>"; };
 		5771DF552C5A857B00B0B08B /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		5771DF582C5B133500B0B08B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		5771DF5A2C5D126500B0B08B /* TopHeadlinesRemoteDataSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRemoteDataSourceable.swift; sourceTree = "<group>"; };
+		5771DF5C2C5D12F700B0B08B /* TopHeadlinesRepositoryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepositoryable.swift; sourceTree = "<group>"; };
 		577899992C59208E00013EEF /* TopHeadlinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRepository.swift; sourceTree = "<group>"; };
 		5778999B2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesLocalDataSource.swift; sourceTree = "<group>"; };
 		5778999E2C5920BE00013EEF /* HeadlineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineEntity.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 		577899952C59206100013EEF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				5771DF5C2C5D12F700B0B08B /* TopHeadlinesRepositoryable.swift */,
 				577899992C59208E00013EEF /* TopHeadlinesRepository.swift */,
 			);
 			path = Repositories;
@@ -209,6 +214,7 @@
 				57425FD32C59275A007D1E76 /* Endpoints */,
 				57425FDB2C592F5B007D1E76 /* Helpers */,
 				577899A22C5920D900013EEF /* Models */,
+				5771DF5A2C5D126500B0B08B /* TopHeadlinesRemoteDataSourceable.swift */,
 				577899A02C5920D500013EEF /* TopHeadlinesRemoteDataSource.swift */,
 			);
 			path = RemoteDataSources;
@@ -492,12 +498,14 @@
 				57CC54642C59C67500A5ACD3 /* HeadlineCell.swift in Sources */,
 				5778999F2C5920BE00013EEF /* HeadlineEntity.swift in Sources */,
 				5771DF542C5A856800B0B08B /* DatabaseAccessible.swift in Sources */,
+				5771DF5D2C5D12F700B0B08B /* TopHeadlinesRepositoryable.swift in Sources */,
 				5771DF412C5A27C100B0B08B /* ArticleViewController.swift in Sources */,
 				577899A82C59248500013EEF /* SourceResponseModel.swift in Sources */,
 				5771DF512C5A853C00B0B08B /* DatabaseConfig.swift in Sources */,
 				5778999C2C5920A500013EEF /* TopHeadlinesLocalDataSource.swift in Sources */,
 				57425FE32C5936B7007D1E76 /* HTTPRequestable.swift in Sources */,
 				577899A12C5920D500013EEF /* TopHeadlinesRemoteDataSource.swift in Sources */,
+				5771DF5B2C5D126500B0B08B /* TopHeadlinesRemoteDataSourceable.swift in Sources */,
 				5771DF432C5A27CF00B0B08B /* ArticleView.swift in Sources */,
 				5771DF452C5A29FE00B0B08B /* ArticleViewModel.swift in Sources */,
 				5771DF562C5A857B00B0B08B /* RealmHelper.swift in Sources */,

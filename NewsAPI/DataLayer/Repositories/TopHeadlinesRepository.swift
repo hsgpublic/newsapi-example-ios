@@ -8,17 +8,18 @@
 import Foundation
 import Combine
 
-final class TopHeadlinesRepository {
+final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
     // MARK: Properties
-    private let remoteDataSource: TopHeadlinesRemoteDataSource
+    private let remoteDataSource: TopHeadlinesRemoteDataSourceable
     private var topHeadlinesCancellable: AnyCancellable?
     
     // MARK: Observables
     let networkErrorSubject = PassthroughSubject<Error, Never>()
-    @Published private(set) var headlines: [HeadlineModel] = []
+    var headlinesPublisher: Published<[HeadlineModel]>.Publisher { $headlines }
+    @Published private var headlines: [HeadlineModel] = []
     
     // MARK: Lifecycle
-    init(remoteDataSource: TopHeadlinesRemoteDataSource = TopHeadlinesRemoteDataSource()) {
+    init(remoteDataSource: TopHeadlinesRemoteDataSourceable = TopHeadlinesRemoteDataSource()) {
         self.remoteDataSource = remoteDataSource
     }
     

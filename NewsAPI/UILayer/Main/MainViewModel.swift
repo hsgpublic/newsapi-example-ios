@@ -10,7 +10,7 @@ import Foundation
 
 final class MainViewModel {
     // MARK: Properties
-    private let repository: TopHeadlinesRepository
+    private let repository: TopHeadlinesRepositoryable
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: Observables
@@ -21,7 +21,7 @@ final class MainViewModel {
     @Published private(set) var headlineCellDatas: [HeadlineCellData] = []
     
     // MARK: Lifecycle
-    init(repository: TopHeadlinesRepository = TopHeadlinesRepository()) {
+    init(repository: TopHeadlinesRepositoryable = TopHeadlinesRepository()) {
         self.repository = repository
         bindRepository()
     }
@@ -30,7 +30,7 @@ final class MainViewModel {
 // MARK: - Bind
 extension MainViewModel {
     func bindRepository() {
-        repository.$headlines
+        repository.headlinesPublisher
             .map { headlines in
                 headlines.map { headline in
                     let formattedPublishedAt = headline.publishedAt

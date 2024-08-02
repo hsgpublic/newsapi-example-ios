@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class TopHeadlinesRemoteDataSource {
+final class TopHeadlinesRemoteDataSource: TopHeadlinesRemoteDataSourceable {
     private let httpRequester: HTTPRequestable
     
     init(httpRequester: HTTPRequestable = AlamofireHelper.shared) {
