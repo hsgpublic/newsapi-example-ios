@@ -15,6 +15,7 @@ final class MainView: UIView {
         flowLayout.estimatedItemSize = .zero
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.refreshControl = UIRefreshControl()
         view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCell")
         view.register(HeadlineCell.self, forCellWithReuseIdentifier: HeadlineCell.identifier)
         return view

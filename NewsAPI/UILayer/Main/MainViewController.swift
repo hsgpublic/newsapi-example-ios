@@ -34,7 +34,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         bindView()
         bindViewModel()
-        viewModel.fetchTopHeadlines(country: "kr")
+        refresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +56,11 @@ extension MainViewController {
     private func bindView() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
+        mainView.collectionView.refreshControl?.addTarget(
+            self,
+            action: #selector(refresh),
+            for: .valueChanged
+        )
     }
     
     private func bindViewModel() {
@@ -70,6 +75,11 @@ extension MainViewController {
 
 // MARK: Functions
 extension MainViewController {
+    @objc private func refresh() {
+        viewModel.fetchTopHeadlines(country: "kr")
+        mainView.collectionView.refreshControl?.endRefreshing()
+    }
+    
     private func moveToArticle(title: String, urlString: String) {
         guard let url = URL(string: urlString) else {
             return
