@@ -10,6 +10,6 @@ import Combine
 
 protocol TopHeadlinesRepositoryable {
     var networkErrorSubject: PassthroughSubject<Error, Never> { get }
-    var headlinesPublisher: Published<[HeadlineModel]>.Publisher { get }
+    var headlinesPublisher: AnyPublisher<[HeadlineModel], Never> { get }
     func fetchTopHeadlines(country: String)
 }

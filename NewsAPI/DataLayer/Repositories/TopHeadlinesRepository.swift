@@ -15,8 +15,10 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
     
     // MARK: Observables
     let networkErrorSubject = PassthroughSubject<Error, Never>()
-    var headlinesPublisher: Published<[HeadlineModel]>.Publisher { $headlines }
-    @Published private var headlines: [HeadlineModel] = []
+    var headlinesPublisher: AnyPublisher<[HeadlineModel], Never> {
+        headlinesSubject.eraseToAnyPublisher()
+    }
+    private let headlinesSubject = CurrentValueSubject<[HeadlineModel], Never>([])
     
     // MARK: Lifecycle
     init(remoteDataSource: TopHeadlinesRemoteDataSourceable = TopHeadlinesRemoteDataSource()) {
@@ -35,7 +37,7 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
                     break
                 }
             } receiveValue: { [weak self] topHeadlines in
-                self?.headlines = topHeadlines.articles
+                let headlines = topHeadlines.articles
                     .map { article in
                         HeadlineModel(
                             title: article.title,
@@ -45,6 +47,7 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
                             url: article.url
                         )
                     }
+                self?.headlinesSubject.send(headlines)
             }
     }
 }
