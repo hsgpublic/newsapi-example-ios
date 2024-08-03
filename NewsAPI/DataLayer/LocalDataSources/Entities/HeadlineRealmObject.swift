@@ -15,9 +15,17 @@ final class HeadlineRealmObject: Object {
     @Persisted var url: String
     @Persisted var urlToImage: String
     @Persisted var publishedAt: String
+    @Persisted var articleVisited: Bool
     
     // MARK: Lifecycle
-    convenience init(author: String, title: String, url: String, urlToImage: String, publishedAt: String) {
+    convenience init(
+        author: String,
+        title: String,
+        url: String,
+        urlToImage: String,
+        publishedAt: String,
+        articleVisited: Bool
+    ) {
         self.init()
         
         compositeKey = HeadlineRealmObject.makeCompositeKey(
@@ -29,6 +37,7 @@ final class HeadlineRealmObject: Object {
         self.url = url
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
+        self.articleVisited = articleVisited
     }
     
     class func makeCompositeKey(publishedAt: String, author: String) -> String {
@@ -44,7 +53,8 @@ extension HeadlineRealmObject {
             title: title,
             url: url,
             urlToImage: urlToImage,
-            publishedAt: publishedAt
+            publishedAt: publishedAt,
+            articleVisited: articleVisited
         )
     }
 }

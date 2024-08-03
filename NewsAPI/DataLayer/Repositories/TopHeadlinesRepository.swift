@@ -111,4 +111,32 @@ extension TopHeadlinesRepository {
             cancellables.insert(cancellable)
         }
     }
+    
+    func markVisited(index: Int) {
+        guard headlinesSubject.value.indices.contains(index) else {
+            return
+        }
+        
+        headlinesSubject.value[index].articleVisited = true
+        let headline = headlinesSubject.value[index]
+        let entity = headline.toHeadlineEntity()
+        var cancellable: AnyCancellable?
+        cancellable = localDataSource.upsertHeadlines(entities: [entity])
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .finished:
+                    break
+                }
+                if let cancellable {
+                    self?.cancellables.remove(cancellable)
+                }
+            } receiveValue: {
+                
+            }
+        if let cancellable {
+            cancellables.insert(cancellable)
+        }
+    }
 }

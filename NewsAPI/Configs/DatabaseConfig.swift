@@ -10,5 +10,5 @@ import Foundation
 final class DatabaseConfig {
     private init() { }
     
-    static let schemaVersion: UInt64 = 3
+    static let schemaVersion: UInt64 = 4
 }

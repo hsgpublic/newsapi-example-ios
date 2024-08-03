@@ -14,4 +14,5 @@ struct HeadlineCellData {
     let author: String
     let urlToImage: String
     let articleURL: String
+    var articleVisited: Bool = false
 }

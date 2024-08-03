@@ -41,7 +41,8 @@ extension MainViewModel {
                         formattedPublishedAt: formattedPublishedAt,
                         author: headline.author,
                         urlToImage: headline.urlToImage,
-                        articleURL: headline.url
+                        articleURL: headline.url,
+                        articleVisited: headline.articleVisited
                     )
                 }
             }
@@ -64,5 +65,9 @@ extension MainViewModel {
         }
         
         return headlineCellDatas[index]
+    }
+    
+    func markVisited(index: Int) {
+        repository.markVisited(index: index)
     }
 }

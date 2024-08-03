@@ -13,6 +13,7 @@ struct HeadlineEntity {
     var url: String
     var urlToImage: String
     var publishedAt: String
+    var articleVisited: Bool = false
 }
 
 // MARK: - Functions
@@ -23,7 +24,8 @@ extension HeadlineEntity {
             publishedAt: publishedAt,
             author: author,
             urlToImage: urlToImage,
-            url: url
+            url: url,
+            articleVisited: articleVisited
         )
     }
     
@@ -33,7 +35,8 @@ extension HeadlineEntity {
             title: title,
             url: url,
             urlToImage: urlToImage,
-            publishedAt: publishedAt
+            publishedAt: publishedAt,
+            articleVisited: articleVisited
         )
     }
 }

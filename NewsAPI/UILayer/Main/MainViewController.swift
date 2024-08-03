@@ -80,6 +80,10 @@ extension MainViewController {
         mainView.collectionView.refreshControl?.endRefreshing()
     }
     
+    private func markVisited(index: Int) {
+        viewModel.markVisited(index: index)
+    }
+    
     private func moveToArticle(title: String, urlString: String) {
         guard let url = URL(string: urlString) else {
             return
@@ -119,6 +123,7 @@ extension MainViewController: UICollectionViewDelegate {
         }
         
         moveToArticle(title: cellData.title, urlString: cellData.articleURL)
+        markVisited(index: indexPath.item)
     }
 }
 

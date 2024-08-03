@@ -131,6 +131,7 @@ extension HeadlineCell {
             .fade(duration: 0.25)
             .set(to: imageView)
         titleLabel.text = data.title
+        titleLabel.textColor = data.articleVisited ? .red : .label
         publishInfoLabel.text = "\(data.formattedPublishedAt) by \(data.author)"
     }
 }
