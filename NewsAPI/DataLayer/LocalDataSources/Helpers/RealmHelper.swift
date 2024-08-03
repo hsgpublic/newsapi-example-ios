@@ -39,19 +39,43 @@ final actor RealmHelper {
 
 // MARK: - DatabaseAccessible
 extension RealmHelper: DatabaseAccessible {
-    func read<T: HeadlineEntityable>(entityType: T.Type, query: NSPredicate) async throws -> [T] {
-        return []
+    func read<T>(entityType: T.Type, query: NSPredicate) async throws -> [T] { guard let realm = self.realm else {
+            throw DatabaseError.notInitialized
+        }
+        guard let objectType = entityType as? Object.Type else {
+            throw DatabaseError.entityTypeMismatch(requiredType: Object.self)
+        }
+        
+        return realm.objects(objectType)
+            .filter(query)
+            .compactMap { $0 as? T }
     }
     
-    func upsert<T: HeadlineEntityable>(entities: [T]) async throws {
+    func upsert<T>(entities: [T]) async throws {
+        guard let realm = self.realm else {
+            throw DatabaseError.notInitialized
+        }
+        guard let objects = entities as? [Object] else {
+            throw DatabaseError.entityTypeMismatch(requiredType: [Object].self)
+        }
         
+        try realm.write {
+            realm.add(objects, update: .modified)
+        }
     }
     
-    func delete<T: HeadlineEntityable>(entities: [T], query: NSPredicate) async throws {
+    func delete<T>(entityType: T.Type, query: NSPredicate) async throws {
+        guard let realm = self.realm else {
+            throw DatabaseError.notInitialized
+        }
+        guard let objectType = entityType as? Object.Type else {
+            throw DatabaseError.entityTypeMismatch(requiredType: Object.self)
+        }
         
-    }
-    
-    func deleteAll<T: HeadlineEntityable>(entityType: T.Type, query: NSPredicate) async throws {
-        
+        try realm.write {
+            let objects = realm.objects(objectType)
+                .filter(query)
+            realm.delete(objects)
+        }
     }
 }

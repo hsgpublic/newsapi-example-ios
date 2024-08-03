@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class HeadlineRealmEntity: Object, HeadlineEntityable {
+final class HeadlineRealmObject: Object {
     @Persisted var author: String
     @Persisted var title: String
     @Persisted var url: String
@@ -28,9 +28,9 @@ final class HeadlineRealmEntity: Object, HeadlineEntityable {
 }
 
 // MARK: - Functions
-extension HeadlineRealmEntity {
+extension HeadlineRealmObject {
     func toHeadlineEntity() -> HeadlineEntity {
-        HeadlineEntity(
+        return HeadlineEntity(
             author: author,
             title: title,
             url: url,

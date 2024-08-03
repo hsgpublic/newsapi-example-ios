@@ -11,6 +11,5 @@ import Foundation
 protocol TopHeadlinesLocalDataSourceable {
     func readHeadlines() -> AnyPublisher<[HeadlineEntity], Error>
     func upsertHeadlines(entities: [HeadlineEntity]) -> AnyPublisher<Void, Error>
-    func deleteHeadlines(entities: [HeadlineEntity]) -> AnyPublisher<Void, Error>
-    func deleteAllHeadlines() -> AnyPublisher<Void, Error>
+    func deleteHeadlines() -> AnyPublisher<Void, Error>
 }

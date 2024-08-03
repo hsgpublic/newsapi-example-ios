@@ -26,7 +26,7 @@ extension TopHeadlinesLocalDataSource {
                 do {
                     let predicate = NSPredicate()
                     let realmEntities = try await self?.databaseAccessor.read(
-                        entityType: HeadlineRealmEntity.self,
+                        entityType: HeadlineRealmObject.self,
                         query: predicate
                     ) ?? []
                     let entities = realmEntities.map { $0.toHeadlineEntity() }
@@ -54,29 +54,13 @@ extension TopHeadlinesLocalDataSource {
         .eraseToAnyPublisher()
     }
     
-    func deleteHeadlines(entities: [HeadlineEntity]) -> AnyPublisher<Void, Error> {
+    func deleteHeadlines() -> AnyPublisher<Void, Error> {
         return Future<Void, Error> { promise in
             Task { [weak self] in
                 do {
                     let predicate = NSPredicate()
-                    let realmEntities = entities.map { $0.toRealmEntity() }
                     try await self?.databaseAccessor.delete(
-                        entities: realmEntities,
-                        query: predicate
-                    )
-                }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-    
-    func deleteAllHeadlines() -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
-            Task { [weak self] in
-                do {
-                    let predicate = NSPredicate()
-                    try await self?.databaseAccessor.deleteAll(
-                        entityType: HeadlineRealmEntity.self,
+                        entityType: HeadlineRealmObject.self,
                         query: predicate
                     )
                 }

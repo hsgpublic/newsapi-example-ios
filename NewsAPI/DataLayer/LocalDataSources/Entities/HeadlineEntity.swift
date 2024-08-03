@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeadlineEntity: HeadlineEntityable {
+struct HeadlineEntity {
     var author: String
     var title: String
     var url: String
@@ -17,8 +17,18 @@ struct HeadlineEntity: HeadlineEntityable {
 
 // MARK: - Functions
 extension HeadlineEntity {
-    func toRealmEntity() -> HeadlineRealmEntity {
-        HeadlineRealmEntity(
+    func toHeadlineModel() -> HeadlineModel {
+        return HeadlineModel(
+            title: title,
+            publishedAt: publishedAt,
+            author: author,
+            urlToImage: urlToImage,
+            url: url
+        )
+    }
+    
+    func toRealmEntity() -> HeadlineRealmObject {
+        return HeadlineRealmObject(
             author: author,
             title: title,
             url: url,
