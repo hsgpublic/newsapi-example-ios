@@ -12,6 +12,7 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
     // MARK: Properties
     private let localDataSource: TopHeadlinesLocalDataSourceable
     private let remoteDataSource: TopHeadlinesRemoteDataSourceable
+    private var cancellables = Set<AnyCancellable>()
     private var topHeadlinesCancellable: AnyCancellable?
     
     // MARK: Observables
@@ -29,11 +30,44 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
         self.localDataSource = localDataSource
         self.remoteDataSource = remoteDataSource
     }
-    
-    // MARK: Functions
+}
+
+// MARK: Functions
+extension TopHeadlinesRepository {
     func fetchTopHeadlines(country: String) {
-        topHeadlinesCancellable?.cancel()
-        topHeadlinesCancellable = remoteDataSource.getTopHeadlines(country: country)
+        fetchLocalHeadlines(country: country)
+        fetchRemoteHeadlines(country: country)
+    }
+    
+    func fetchLocalHeadlines(country: String) {
+        var cancellable: AnyCancellable?
+        cancellable = localDataSource.readHeadlines()
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .finished:
+                    break
+                }
+                if let cancellable {
+                    self?.cancellables.remove(cancellable)
+                }
+            } receiveValue: { [weak self] entities in
+                let models = entities.map { $0.toHeadlineModel() }
+                guard models.isEmpty == false else {
+                    return
+                }
+                
+                self?.headlinesSubject.send(models)
+            }
+        if let cancellable {
+            cancellables.insert(cancellable)
+        }
+    }
+    
+    func fetchRemoteHeadlines(country: String) {
+        var cancellable: AnyCancellable?
+        cancellable = remoteDataSource.getTopHeadlines(country: country)
             .sink { [weak self] completion in
                 switch completion {
                 case .failure(let error):
@@ -41,18 +75,40 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
                 case .finished:
                     break
                 }
+                if let cancellable {
+                    self?.cancellables.remove(cancellable)
+                }
             } receiveValue: { [weak self] topHeadlines in
-                let headlines = topHeadlines.articles
-                    .map { article in
-                        HeadlineModel(
-                            title: article.title,
-                            publishedAt: article.publishedAt,
-                            author: article.author,
-                            urlToImage: article.urlToImage,
-                            url: article.url
-                        )
-                    }
-                self?.headlinesSubject.send(headlines)
+                self?.saveRemoteHeadlines(country: country, topHeadlines: topHeadlines)
             }
+        if let cancellable {
+            cancellables.insert(cancellable)
+        }
+    }
+    
+    func saveRemoteHeadlines(country: String, topHeadlines: TopHeadlinesResponseModel) {
+        let entities = topHeadlines.articles
+            .map { article in
+                article.toHeadlineEntity()
+            }
+        var cancellable: AnyCancellable?
+        cancellable = localDataSource.upsertHeadlines(entities: entities)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .finished:
+                    self?.fetchLocalHeadlines(country: country)
+                    break
+                }
+                if let cancellable {
+                    self?.cancellables.remove(cancellable)
+                }
+            } receiveValue: {
+                
+            }
+        if let cancellable {
+            cancellables.insert(cancellable)
+        }
     }
 }

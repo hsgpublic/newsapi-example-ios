@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DatabaseAccessible {
-    func read<T>(entityType: T.Type, query: NSPredicate) async throws -> [T]
+    func read<T>(entityType: T.Type, predicateFormat: String) async throws -> [T]
     func upsert<T>(entities: [T]) async throws
-    func delete<T>(entityType: T.Type, query: NSPredicate) async throws
+    func delete<T>(entityType: T.Type, predicateFormat: String) async throws
 }

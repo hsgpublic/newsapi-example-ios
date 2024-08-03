@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 final class HeadlineRealmObject: Object {
+    @Persisted(primaryKey: true) var compositeKey: String
     @Persisted var author: String
     @Persisted var title: String
     @Persisted var url: String
@@ -19,11 +20,19 @@ final class HeadlineRealmObject: Object {
     convenience init(author: String, title: String, url: String, urlToImage: String, publishedAt: String) {
         self.init()
         
+        compositeKey = HeadlineRealmObject.makeCompositeKey(
+            publishedAt: publishedAt,
+            author: author
+        )
         self.author = author
         self.title = title
         self.url = url
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
+    }
+    
+    class func makeCompositeKey(publishedAt: String, author: String) -> String {
+        return "\(publishedAt)-\(author)"
     }
 }
 

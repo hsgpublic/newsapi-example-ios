@@ -43,6 +43,7 @@
 		57CC54662C5A0AC900A5ACD3 /* HeadlineCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CC54652C5A0AC900A5ACD3 /* HeadlineCellData.swift */; };
 		57CC54692C5A23AA00A5ACD3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 57CC54682C5A23AA00A5ACD3 /* Kingfisher */; };
 		57DEC17E2C5E04AD00E95C1B /* DatabaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DEC17D2C5E04AD00E95C1B /* DatabaseError.swift */; };
+		57DEC1802C5E51E800E95C1B /* DatabaseActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DEC17F2C5E51E800E95C1B /* DatabaseActor.swift */; };
 		57EC79092C58D4F0004715AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57EC79082C58D4F0004715AE /* Assets.xcassets */; };
 		57EC790C2C58D4F0004715AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57EC790B2C58D4F0004715AE /* Preview Assets.xcassets */; };
 		57EC79162C58D4F0004715AE /* NewsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC79152C58D4F0004715AE /* NewsAPITests.swift */; };
@@ -101,6 +102,7 @@
 		57CC54632C59C67500A5ACD3 /* HeadlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCell.swift; sourceTree = "<group>"; };
 		57CC54652C5A0AC900A5ACD3 /* HeadlineCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineCellData.swift; sourceTree = "<group>"; };
 		57DEC17D2C5E04AD00E95C1B /* DatabaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseError.swift; sourceTree = "<group>"; };
+		57DEC17F2C5E51E800E95C1B /* DatabaseActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseActor.swift; sourceTree = "<group>"; };
 		57EC79012C58D4EF004715AE /* NewsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EC79082C58D4F0004715AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57EC790B2C58D4F0004715AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				57DEC17D2C5E04AD00E95C1B /* DatabaseError.swift */,
 				5771DF532C5A856800B0B08B /* DatabaseAccessible.swift */,
+				57DEC17F2C5E51E800E95C1B /* DatabaseActor.swift */,
 				5771DF552C5A857B00B0B08B /* RealmHelper.swift */,
 			);
 			path = Helpers;
@@ -492,6 +495,7 @@
 				57425FDD2C592F66007D1E76 /* AlamofireHelper.swift in Sources */,
 				57BEB47C2C59AB6000E20930 /* MainView.swift in Sources */,
 				57425FDA2C592C11007D1E76 /* ServerConfig.swift in Sources */,
+				57DEC1802C5E51E800E95C1B /* DatabaseActor.swift in Sources */,
 				57425FD52C59276D007D1E76 /* Endpointable.swift in Sources */,
 				57425FD72C59289E007D1E76 /* TopHeadlinesEndpoint.swift in Sources */,
 				5771DF632C5DCCEF00B0B08B /* TopHeadlinesLocalDataSourceable.swift in Sources */,
