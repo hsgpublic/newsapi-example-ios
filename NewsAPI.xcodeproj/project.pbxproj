@@ -33,6 +33,8 @@
 		577899A62C59210100013EEF /* HeadlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899A52C59210100013EEF /* HeadlineModel.swift */; };
 		577899A82C59248500013EEF /* SourceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899A72C59248500013EEF /* SourceResponseModel.swift */; };
 		577899AA2C59249600013EEF /* ArticleResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577899A92C59249600013EEF /* ArticleResponseModel.swift */; };
+		579AEAC32C5E6A1600ECA05B /* ArticleObjcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579AEAC22C5E6A1600ECA05B /* ArticleObjcViewController.m */; };
+		579AEAC62C5E6F9300ECA05B /* ArticleObjcViewController+WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 579AEAC52C5E6F9300ECA05B /* ArticleObjcViewController+WebView.m */; };
 		57BEB4722C59AA9900E20930 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEB4712C59AA9900E20930 /* AppDelegate.swift */; };
 		57BEB4742C59AABA00E20930 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEB4732C59AABA00E20930 /* SceneDelegate.swift */; };
 		57BEB4782C59AB2E00E20930 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEB4772C59AB2E00E20930 /* MainViewController.swift */; };
@@ -93,6 +95,11 @@
 		577899A52C59210100013EEF /* HeadlineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineModel.swift; sourceTree = "<group>"; };
 		577899A72C59248500013EEF /* SourceResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceResponseModel.swift; sourceTree = "<group>"; };
 		577899A92C59249600013EEF /* ArticleResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleResponseModel.swift; sourceTree = "<group>"; };
+		579AEAC02C5E6A1600ECA05B /* NewsAPI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NewsAPI-Bridging-Header.h"; sourceTree = "<group>"; };
+		579AEAC12C5E6A1600ECA05B /* ArticleObjcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleObjcViewController.h; sourceTree = "<group>"; };
+		579AEAC22C5E6A1600ECA05B /* ArticleObjcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleObjcViewController.m; sourceTree = "<group>"; };
+		579AEAC42C5E6F9300ECA05B /* ArticleObjcViewController+WebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ArticleObjcViewController+WebView.h"; sourceTree = "<group>"; };
+		579AEAC52C5E6F9300ECA05B /* ArticleObjcViewController+WebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ArticleObjcViewController+WebView.m"; sourceTree = "<group>"; };
 		57BEB4712C59AA9900E20930 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57BEB4732C59AABA00E20930 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		57BEB4772C59AB2E00E20930 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +182,10 @@
 				5771DF422C5A27CF00B0B08B /* ArticleView.swift */,
 				5771DF402C5A27C100B0B08B /* ArticleViewController.swift */,
 				5771DF442C5A29FE00B0B08B /* ArticleViewModel.swift */,
+				579AEAC12C5E6A1600ECA05B /* ArticleObjcViewController.h */,
+				579AEAC22C5E6A1600ECA05B /* ArticleObjcViewController.m */,
+				579AEAC42C5E6F9300ECA05B /* ArticleObjcViewController+WebView.h */,
+				579AEAC52C5E6F9300ECA05B /* ArticleObjcViewController+WebView.m */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -319,6 +330,7 @@
 				5771DF572C5B130B00B0B08B /* Utils */,
 				57BEB4712C59AA9900E20930 /* AppDelegate.swift */,
 				57BEB4732C59AABA00E20930 /* SceneDelegate.swift */,
+				579AEAC02C5E6A1600ECA05B /* NewsAPI-Bridging-Header.h */,
 				57EC79082C58D4F0004715AE /* Assets.xcassets */,
 				57EC790A2C58D4F0004715AE /* Preview Content */,
 			);
@@ -424,6 +436,7 @@
 				TargetAttributes = {
 					57EC79002C58D4EF004715AE = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					57EC79102C58D4F0004715AE = {
 						CreatedOnToolsVersion = 15.4;
@@ -498,6 +511,7 @@
 				57DEC1802C5E51E800E95C1B /* DatabaseActor.swift in Sources */,
 				57425FD52C59276D007D1E76 /* Endpointable.swift in Sources */,
 				57425FD72C59289E007D1E76 /* TopHeadlinesEndpoint.swift in Sources */,
+				579AEAC32C5E6A1600ECA05B /* ArticleObjcViewController.m in Sources */,
 				5771DF632C5DCCEF00B0B08B /* TopHeadlinesLocalDataSourceable.swift in Sources */,
 				5771DF652C5DEAB500B0B08B /* HeadlineEntity.swift in Sources */,
 				5771DF592C5B133500B0B08B /* StringExtension.swift in Sources */,
@@ -508,6 +522,7 @@
 				57CC54662C5A0AC900A5ACD3 /* HeadlineCellData.swift in Sources */,
 				57BEB47A2C59AB3A00E20930 /* MainViewModel.swift in Sources */,
 				577899AA2C59249600013EEF /* ArticleResponseModel.swift in Sources */,
+				579AEAC62C5E6F9300ECA05B /* ArticleObjcViewController+WebView.m in Sources */,
 				57BEB4722C59AA9900E20930 /* AppDelegate.swift in Sources */,
 				5778999A2C59208E00013EEF /* TopHeadlinesRepository.swift in Sources */,
 				57DEC17E2C5E04AD00E95C1B /* DatabaseError.swift in Sources */,
@@ -685,6 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NewsAPI/Preview Content\"";
@@ -703,6 +719,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hsgpublic.example.NewsAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "NewsAPI/NewsAPI-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -713,6 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NewsAPI/Preview Content\"";
@@ -731,6 +750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = hsgpublic.example.NewsAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "NewsAPI/NewsAPI-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

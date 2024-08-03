@@ -89,9 +89,17 @@ extension MainViewController {
             return
         }
         
-        let articleViewModel = ArticleViewModel(title: title, url: url)
-        let articleViewController = ArticleViewController(viewModel: articleViewModel)
-        navigationController?.pushViewController(articleViewController, animated: true)
+        if true {
+            // Objective C web view.
+            let articleObjcViewController = ArticleObjcViewController()
+            articleObjcViewController.setupTitle(title, url: url)
+            navigationController?.pushViewController(articleObjcViewController, animated: true)
+        } else {
+            // Swift web view.
+            let articleViewModel = ArticleViewModel(title: title, url: url)
+            let articleViewController = ArticleViewController(viewModel: articleViewModel)
+            navigationController?.pushViewController(articleViewController, animated: true)
+        }
     }
 }
 
