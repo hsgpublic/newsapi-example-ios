@@ -44,8 +44,8 @@ struct ArticleResponseModel: Decodable {
     }
 }
 
+// MARK: - Functions
 extension ArticleResponseModel {
-    // MARK: Functions
     func toHeadlineEntity() -> HeadlineEntity {
         return HeadlineEntity(
             author: author,

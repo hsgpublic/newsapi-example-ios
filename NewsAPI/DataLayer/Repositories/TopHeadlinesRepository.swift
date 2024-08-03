@@ -10,6 +10,7 @@ import Combine
 
 final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
     // MARK: Properties
+    private let localDataSource: TopHeadlinesLocalDataSourceable
     private let remoteDataSource: TopHeadlinesRemoteDataSourceable
     private var topHeadlinesCancellable: AnyCancellable?
     
@@ -21,7 +22,11 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
     private let headlinesSubject = CurrentValueSubject<[HeadlineModel], Never>([])
     
     // MARK: Lifecycle
-    init(remoteDataSource: TopHeadlinesRemoteDataSourceable = TopHeadlinesRemoteDataSource()) {
+    init(
+        localDataSource: TopHeadlinesLocalDataSourceable = TopHeadlinesLocalDataSource(),
+        remoteDataSource: TopHeadlinesRemoteDataSourceable = TopHeadlinesRemoteDataSource()
+    ) {
+        self.localDataSource = localDataSource
         self.remoteDataSource = remoteDataSource
     }
     
