@@ -35,11 +35,11 @@ final class TopHeadlinesRepository: TopHeadlinesRepositoryable {
 // MARK: Functions
 extension TopHeadlinesRepository {
     func fetchTopHeadlines(country: String) {
-        fetchLocalHeadlines(country: country)
+        fetchLocalHeadlines()
         fetchRemoteHeadlines(country: country)
     }
     
-    func fetchLocalHeadlines(country: String) {
+    private func fetchLocalHeadlines() {
         var cancellable: AnyCancellable?
         cancellable = localDataSource.readHeadlines()
             .sink { [weak self] completion in
@@ -65,7 +65,7 @@ extension TopHeadlinesRepository {
         }
     }
     
-    func fetchRemoteHeadlines(country: String) {
+    private func fetchRemoteHeadlines(country: String) {
         var cancellable: AnyCancellable?
         cancellable = remoteDataSource.getTopHeadlines(country: country)
             .sink { [weak self] completion in
@@ -79,17 +79,23 @@ extension TopHeadlinesRepository {
                     self?.cancellables.remove(cancellable)
                 }
             } receiveValue: { [weak self] topHeadlines in
-                self?.saveRemoteHeadlines(country: country, topHeadlines: topHeadlines)
+                self?.saveRemoteHeadlines(topHeadlines: topHeadlines)
             }
         if let cancellable {
             cancellables.insert(cancellable)
         }
     }
     
-    func saveRemoteHeadlines(country: String, topHeadlines: TopHeadlinesResponseModel) {
+    private func saveRemoteHeadlines(topHeadlines: TopHeadlinesResponseModel) {
+        let headlines = headlinesSubject.value
         let entities = topHeadlines.articles
             .map { article in
-                article.toHeadlineEntity()
+                var entity = article.toHeadlineEntity()
+                entity.articleVisited = headlines.first { headline in
+                    headline.publishedAt == entity.publishedAt &&
+                    headline.author == entity.author
+                }?.articleVisited ?? false
+                return entity
             }
         var cancellable: AnyCancellable?
         cancellable = localDataSource.upsertHeadlines(entities: entities)
@@ -98,8 +104,7 @@ extension TopHeadlinesRepository {
                 case .failure(let error):
                     print(error.localizedDescription)
                 case .finished:
-                    self?.fetchLocalHeadlines(country: country)
-                    break
+                    self?.fetchLocalHeadlines()
                 }
                 if let cancellable {
                     self?.cancellables.remove(cancellable)
