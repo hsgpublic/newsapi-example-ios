@@ -125,11 +125,12 @@ extension HeadlineCell {
     }
     
     func setup(data: HeadlineCellData) {
-        KF.url(URL(string: data.urlToImage))
-            .placeholder(nil)
-            .loadDiskFileSynchronously()
-            .fade(duration: 0.25)
-            .set(to: imageView)
+        if let imageURL = URL(string: data.urlToImage) {
+            let resource = KF.ImageResource(downloadURL: imageURL, cacheKey: data.urlToImage)
+            imageView.kf.setImage(with: resource)
+        } else {
+            imageView.image = nil
+        }
         titleLabel.text = data.title
         titleLabel.textColor = data.articleVisited ? .red : .label
         publishInfoLabel.text = "\(data.formattedPublishedAt) by \(data.author)"
